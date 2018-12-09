@@ -126,7 +126,7 @@ jQuery(document).ready(function ($) {
 			link.setAttribute('download', 'download');
 			link.click();
 			if (i == 0){
-				if (!confirm("Script start work. It will download "+la+ "Casebook docs. Please look at first link: " + lUrl + " Please put Ok if link correct or Cancel if not."))
+				if (!confirm("Script start work. It will download "+la+ " Casebook docs. Please look at first link: " + lUrl + " Please put Ok if link correct or Cancel if not."))
 				return (0);
 				if(addOptionsFlag1 == true) {
 				if (!confirm("Please check first Casebook doc after download. After it please put Ok if doc correct or Cancel if not."))
