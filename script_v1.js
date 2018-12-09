@@ -131,6 +131,7 @@ jQuery(document).ready(function ($) {
 				if (!confirm("Please check first Casebook doc. Please put Ok if doc correct or Cancel if not."))
 					return (0);
 			}
+			else
 			pausecomp(pauseTimeLink.val() * 1000); //Without pause between interaction "for" possible data error (use 100 or more seconds)
 		}
 	});
