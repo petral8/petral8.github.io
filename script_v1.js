@@ -125,14 +125,18 @@ jQuery(document).ready(function ($) {
 			link.setAttribute('href', lUrl);
 			link.setAttribute('download', 'download');
 			link.click();
-			if (i == 0 && addOptionsFlag1 == true) {
-				if (!confirm("Please look/check first link: " + lUrl + "Please put Ok if link correct after ready first Caseboock doc or Cancel if not."))
+			if (i == 0){
+				if (!confirm("Script start work. It will download "+la+ "Casebook docs. Please look at first link: " + lUrl + " Please put Ok if link correct or Cancel if not."))
+				return (0);
+				if(addOptionsFlag1 == true) {
+				if (!confirm("Please check first Casebook doc after download. After it please put Ok if doc correct or Cancel if not."))
 					return (0);
-				if (!confirm("Please check first Casebook doc. Please put Ok if doc correct or Cancel if not."))
-					return (0);
+			}
 			}
 			else
 			pausecomp(pauseTimeLink.val() * 1000); //Without pause between interaction "for" possible data error (use 100 or more seconds)
+		if(la-i==1)
+		alert("Script end work")	
 		}
 	});
 
