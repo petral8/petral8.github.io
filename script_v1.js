@@ -32,7 +32,16 @@ jQuery(document).ready(function ($) {
 		var subIdLink = $(SUBJECT_IDs).parent().parent().find("input"); //get input link
 		var splitLink = $(SPLIT).parent().parent().find("input");
 		var subIdVal = subIdLink.val();
-		var arrSubIdVal = subIdVal.split(splitLink.val()); //get input values in array 
+		if (subIdVal == "") {
+			alert("Please input Subject IDs")
+			return (0);
+		}
+		var splitVal = splitLink.val();
+		if (splitVal == "")
+			alert("Attention!! Split Subject IDs is empty")
+		if (subIdVal.indexOf(splitVal) == -1)
+			alert("Attention!! Split Subject IDs did not find in Subject IDs field data.")
+		var arrSubIdVal = subIdVal.split(splitVal); //get input values in array 
 		var casebookFlag; //Casebook format flag
 		var optionsFlag; //Options flag
 		var urlMode; //Casebook url mode
@@ -76,11 +85,14 @@ jQuery(document).ready(function ($) {
 				break
 			case 4: //Input URL
 				var tUrl = $(INPUT_START_URL).parent().parent().find("input");
+				if (tUrl.val() == "") {
+					alert("Please input Input start URL")
+					return (0);
+				}
 				url += tUrl.val();
 				tUrl = $(INPUT_END_URL).parent().parent().find("input");
-				url += tUrl.val();
 				urlMode = "";
-				urlEnd = "";
+				urlEnd = tUrl.val();
 				break
 			default:
 				alert('Please choose Casebook Format')
@@ -113,12 +125,13 @@ jQuery(document).ready(function ($) {
 			link.setAttribute('href', lUrl);
 			link.setAttribute('download', 'download');
 			link.click();
-			pausecomp(pauseTimeLink.val() * 1000);//Without pause between interaction "for" possible data error (use 100 or more seconds)
 			if (i == 0 && addOptionsFlag1 == true) {
-				alert("First link: " + lUrl)
-				if (!confirm("Please check link & first Casebook doc. Please put Ok if doc correct or Cancel if not"))
+				if (!confirm("Please look/check first link: " + lUrl + "Please put Ok if link correct after ready first Caseboock doc or Cancel if not."))
+					return (0);
+				if (!confirm("Please check first Casebook doc. Please put Ok if doc correct or Cancel if not."))
 					return (0);
 			}
+			pausecomp(pauseTimeLink.val() * 1000); //Without pause between interaction "for" possible data error (use 100 or more seconds)
 		}
 	});
 
