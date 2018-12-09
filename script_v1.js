@@ -9,7 +9,7 @@
 //      OPTIONS: ---
 // REQUIREMENTS: jquery, occccd.xls
 //         BUGS: ---
-//        NOTES: ---
+//        NOTES: Needs row validation rules
 //       AUTHOR: ALAN PETRAHEN (alanpetrashen@gmail.com) 
 // ORGANIZATION: 
 //      VERSION: 1.0
@@ -101,6 +101,7 @@ jQuery(document).ready(function ($) {
 				addOptionsFlag2 = true;
 			}
 		}
+		var pauseTimeLink = $(PAUSE_TIME).parent().parent().find("input");
 		var la = arrSubIdVal.length; //for for{
 		for (var i = 0; i < la; i++) {
 			if (addOptionsFlag2 == true) //Option 1
@@ -112,8 +113,7 @@ jQuery(document).ready(function ($) {
 			link.setAttribute('href', lUrl);
 			link.setAttribute('download', 'download');
 			link.click();
-			var pauseTimeLink = $(PAUSE_TIME).parent().parent().find("input");
-			pausecomp(pauseTimeLink.val() * 1000);
+			pausecomp(pauseTimeLink.val() * 1000);//Without pause between interaction "for" possible data error (use 100 or more seconds)
 			if (i == 0 && addOptionsFlag1 == true) {
 				alert("First link: " + lUrl)
 				if (!confirm("Please check link & first Casebook doc. Please put Ok if doc correct or Cancel if not"))
