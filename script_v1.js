@@ -89,7 +89,7 @@ jQuery(document).ready(function ($) {
 					alert("Please input Input start URL")
 					return (0);
 				}
-				url += tUrl.val();
+				url = tUrl.val();
 				tUrl = $(INPUT_END_URL).parent().parent().find("input");
 				urlMode = "";
 				urlEnd = tUrl.val();
